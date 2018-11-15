@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>EmpyreLabs</title>
+    <link rel="stylesheet" href="signin.css" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+
+</head>
+<body>
+    <div class="circle"><a href="index.html">Home</a></div>
+
+    <div class="login-box">
+        <h1>Login</h1>
+        <form id="signinForm">
+            <div class="textbox">
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <input type="email" placeholder="Email" id="signemail" name="" value="" />
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-lock" aria-hidden="true"></i>
+                <input type="password" placeholder="Password" id="signpassword" name="" pattern=".{8,}" value="" />
+            </div>
+
+            <input class="btn" type="submit" name="" value="Sign in" /><br />Don't have an account? Sign up <a href="#" class="register">here</a>.
+        </form>
+    </div>
+
+    <div class="register-box">
+        <h1>Register</h1>
+        <form id="registrationForm">
+            <div class="textbox2">
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <input type="email" placeholder="Email" id="registeremail" name="" value="" /> <!-- check div #id to match with cognito-auth.js -->
+            </div>
+
+            <div class="textbox2">
+                <i class="fas fa-lock" aria-hidden="true"></i>
+                <input type="password" placeholder="Password" id="registerpassword" name="" pattern=".{8,}" value="" /> <!-- check div #id to match with cognito-auth.js -->
+            </div>
+
+            <div class="textbox2">
+                <i class="fas fa-lock" aria-hidden="true"></i>
+                <input type="password" placeholder="Confirm Password" id="registercpassword" name="" pattern=".{8,}" value="" /> <!-- check div #id to match with cognito-auth.js -->
+            </div>
+
+            <input class="btn2" type="submit" name="" value="Register" /><br />Have an account? Sign in <a href="#" class="sign">here</a>.
+        </form>
+    </div>
+
+    <script>
+        $('.register').click(function () {
+            $('.login-box, .btn').fadeOut('slow', function () {
+                $('.register-box, .btn2').fadeIn('slow');
+            });
+        });
+
+        $('.sign').click(function () {
+            $('.register-box, .btn2').fadeOut('slow', function () {
+                $('.login-box, .btn').fadeIn('slow');
+            });
+        });
+    </script>
+
+    <script src="js/vendor/aws-cognito-sdk.min.js"></script>
+    <script src="js/vendor/amazon-cognito-identity.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/cognito-auth.js"></script>
+</body>
+</html>
