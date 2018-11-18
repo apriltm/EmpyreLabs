@@ -121,7 +121,7 @@ var EmpyreLabs = window.EmpyreLabs || {};
         signin(email, password,
             function signinSuccess() {
                 console.log('Successfully Logged In');
-                window.location.href = 'signin.html'; 
+                window.location.href = 'https://zjsgp89pe7.execute-api.us-east-1.amazonaws.com/prod/'; 
             },
             function signinError(err) {
                 alert(err);  //give error 
