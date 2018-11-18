@@ -12,7 +12,7 @@ var EmpyreLabs = window.EmpyreLabs || {};
 
     var userPool;
 
-    if (!(_config.cognito.userPoolId &&
+   if (!(_config.cognito.userPoolId &&
         _config.cognito.userPoolClientId &&
         _config.cognito.region)) {
         $('#noCognitoMessage').show(); //no div created yet, so ignore for now
@@ -46,11 +46,13 @@ var EmpyreLabs = window.EmpyreLabs || {};
             resolve(null);
         }
     });
-
+    
 
     /*
      * Cognito User Pool functions
      */
+
+    
 
     function register(email, password, onSuccess, onFailure) {
         var dataEmail = {
@@ -98,12 +100,12 @@ var EmpyreLabs = window.EmpyreLabs || {};
             Username: email,
             Pool: userPool
         });
-    }
+    } 
 
     /*
      *  Event Handlers
      */
-
+   
     $(function onDocReady() {
         $('#signinForm').submit(handleSignin);  //for signing in
         $('#registrationForm').submit(handleRegister); //for registering
@@ -119,13 +121,13 @@ var EmpyreLabs = window.EmpyreLabs || {};
         signin(email, password,
             function signinSuccess() {
                 console.log('Successfully Logged In');
-                window.location.href = 'signin.html'; //not sure if this works; need registration and verification to work first
+                window.location.href = 'signin.html'; 
             },
             function signinError(err) {
                 alert(err);  //give error 
             }
         );
-    }
+    } 
 
     /* for registration */
 
@@ -139,7 +141,7 @@ var EmpyreLabs = window.EmpyreLabs || {};
             console.log('user name is ' + cognitoUser.getUsername());
             var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
             if (confirmation) {
-                window.location.href = 'verify.html'; //this event is not triggering; need to be fixed
+                window.location.href = 'verify.html'; 
             }
         };
         var onFailure = function registerFailure(err) {
@@ -148,15 +150,15 @@ var EmpyreLabs = window.EmpyreLabs || {};
         event.preventDefault();
 
         if (password === password2) {
-            register(email, password, onSuccess, onFailure); //not triggering; need to be fixed
+            register(email, password, onSuccess, onFailure); 
         } else {
-            alert('Passwords do not match'); //not triggering; need to be fixed
+            alert('Passwords do not match'); 
         }
-    }
+    } 
 
     /* for verification */
 
-    function handleVerify(event) {
+     function handleVerify(event) {
         var email = $('#verifyemail').val(); //extracting value from input in the email form; check verify.html for same div #id
         var code = $('#verifycode').val(); //extracting value from input in the verification code form; check verify.html for same div #id
         event.preventDefault();
@@ -164,11 +166,11 @@ var EmpyreLabs = window.EmpyreLabs || {};
             function verifySuccess(result) {
                 console.log('call result: ' + result);
                 console.log('Successfully verified');
-                alert('Verification successful. You will now be redirected to the login page.'); //not triggering; need to be fixed
+                alert('Verification successful. You will now be redirected to the login page.'); 
                 window.location.href = signinUrl;
             },
             function verifyError(err) {
-                alert(err); //not triggering; need to be fixed
+                alert(err); 
             }
         );
     }
